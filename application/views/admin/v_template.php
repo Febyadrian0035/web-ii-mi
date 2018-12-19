@@ -25,8 +25,8 @@
           Data Master
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="<?php echo site_url('admin/mahasiswa/data'); ?>">Mahasiswa</a>
-          <a class="dropdown-item" href="<?php echo site_url('admin/dosen/data'); ?>">Dosen</a>
+          <a class="dropdown-item" href="<?php echo site_url('admin/mahasiswa/'); ?>">Mahasiswa</a>
+          <a class="dropdown-item" href="<?php echo site_url('admin/dosen/'); ?>">Dosen</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Perwalian</a>
         </div>

@@ -22,7 +22,7 @@
 					<td><?php echo $key->alamat; ?></td>
 					<td><?php echo date('d M Y', strtotime($key->created_at)) ; ?></td>
 					<td>
-						Edit | Hapus
+						<a href="<?= site_url('admin/dosen/edit/'.$key->nik); ?>" class="btn btn-warning btn-sm">Edit</a> | <a href="<?= site_url('admin/dosen/hapus/'.$key->nik); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin ?')">Hapus</a>
 					</td>
 				</tr>
 				<?php } ?>

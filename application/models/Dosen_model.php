@@ -8,15 +8,21 @@ class Dosen_model extends CI_Model
 	{
 		return $this->db->get('dosen')->result();
 	}
-	public function get()
-	{
-
-	}
 	public function create($objek){
 		return $this->db->insert('dosen',$objek);
 	}
-	public function get_id($kode)
+	public function remove($id)
 	{
-		return $this->db->where('nik', $kode)->get('dosen')->row();
+		$this->db->where('nik', $id);
+		return $this->db->delete('dosen');
+	}
+	public function get_id($id)
+	{
+		$this->db->where('nik', $id);
+		return $this->db->get('dosen')->row();
+	}
+	public function update($id, $objek)
+	{
+		return $this->db->where('nik', $id)->update('dosen', $objek);
 	}
 }

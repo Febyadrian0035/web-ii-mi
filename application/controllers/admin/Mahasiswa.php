@@ -9,7 +9,7 @@ class Mahasiswa extends CI_Controller
 		parent::__construct();
 		$this->load->model('Mahasiswa_model');
 	}
-	public function data()
+	public function index()
 	{
 		$data['judul'] = 'mahasiswa';
 		$data['sub_judul'] = 'Halaman Mahasiswa';
@@ -28,40 +28,46 @@ class Mahasiswa extends CI_Controller
 	}
 	public function proses_add()
 	{
-		$nim = $this->input->post('nim');
-		$nama = $this->input->post('nama');
-		$prodi = $this->input->post('prodi');
-
 		$objek = array(
-			'nim' => $nim,
-			'nama_mahasiswa' => $nama,
-			'program_studi' => $prodi);
+			'nim' => $this->input->post('nim'),
+			'nama_mahasiswa' => $this->input->post('nama_mahasiswa'),
+			'program_studi' => $this->input->post('program_studi')
+		);
 
-		if ($this->Mahasiswa_model->create($objek)) {
-			// echo 'Berhasil'; 
-			$this->session->set_flashdata('info','Data Berhasil Disimpan !');
-			redirect('admin/mahasiswa/data');
-		}else{
-			// echo 'Gagal';
-			$this->session->set_flashdata('info','Data Gagal Disimpan !');
-			redirect('admin/mahasiswa/data');
-		}
+		$this->Mahasiswa_model->create($objek);
+			redirect('admin/mahasiswa','refresh');
+		
 
 		// var_dump($objek);
 	}
-	public function Hapus($kode)
+	public function Hapus($nim)
 	{
-		if ($this->Mahasiswa_model->remove($kode)) {
-			$this->session->set_flashdata('info','Data Berhasil Dihapus !');
-			redirect('admin/mahasiswa/data');
-		}else{
-			// echo 'Gagal';
-			$this->session->set_flashdata('info','Data Gagal Dihapus !');
-			redirect('admin/mahasiswa/data');
-		}
-	
-	
+		$this->Mahasiswa_model->remove($nim); 
+		redirect('admin/mahasiswa','refresh');
+	}
+	public function edit($nim)
+	{
+		$data['judul']='Mahasiswa';
+		$data['sub_judul']='Edit Data Mahasiswa';
+		$data['halaman']= 'admin/v_edit_mahasiswa';
 
+		$data['isi_data']= $this->Mahasiswa_model->get_id($nim);
+
+		$this->load->view('admin/v_template', $data);
+	}
+	public function proses_edit()
+	{
+		$id = $this->input->post('nim');
+		$objek = array(
+			'nama_mahasiswa' => $this->input->post('nama_mahasiswa'),
+			'program_studi' => $this->input->post('program_studi')
+		);
+
+		$this->Mahasiswa_model->update($id, $objek);
+		redirect('admin/mahasiswa','refresh');
+		
+
+		// var_dump($objek);
 	}
 }
  ?>

@@ -9,7 +9,7 @@ class Dosen extends CI_Controller
 		parent::__construct();
 		$this->load->model('Dosen_model');
 	}
-	public function data()
+	public function index()
 	{
 		$data['judul'] = 'dosen';
 		$data['sub_judul'] = 'Halaman Dosen';
@@ -28,41 +28,44 @@ class Dosen extends CI_Controller
 	}
 	public function proses_add()
 	{
-		$nik = $this->input->post('nik');
-		$nama = $this->input->post('nama');
-		$alamat = $this->input->post('alamat');
-
 		$objek = array(
-			'nik' => $nik,
-			'nama_dosen' => $nama,
-			'alamat' => $alamat
+			'nik' => $this->input->post('nik'),
+			'nama_dosen' => $this->input->post('nama_dosen'),
+			'alamat' => $this->input->post('alamat')
 		);
 
-		if ($this->Dosen_model->create($objek)) {
-			// echo 'Berhasil'; 
-			$this->session->set_flashdata('info','Data Berhasil Disimpan !');
-			redirect('admin/dosen/data');
-		}else{
-			// echo 'Gagal';
-			$this->session->set_flashdata('info','Data Gagal Disimpan !');
-			redirect('admin/dosen/data');
-		}
-
+		$this->Dosen_model->create($objek); 
+		redirect('admin/dosen','refresh');
 		// var_dump($objek);
 	}
-	public function Hapus($kode)
+	public function Hapus($nik)
 	{
-		if ($this->Dosen_model->remove($kode)) {
-			$this->session->set_flashdata('info','Data Berhasil Dihapus !');
-			redirect('admin/dosen/data');
-		}else{
-			// echo 'Gagal';
-			$this->session->set_flashdata('info','Data Gagal Dihapus !');
-			redirect('admin/dosen/data');
-		}
-	
-	
+		$this->Dosen_model->remove($nik);
+		redirect('admin/dosen','refresh');
+	}
+	public function edit($nik)
+	{
+		$data['judul']='Dosen';
+		$data['sub_judul']='Edit Data Dosen';
+		$data['halaman']= 'admin/v_edit_dosen';
 
+		$data['isi_data']= $this->Dosen_model->get_id($nik);
+
+		$this->load->view('admin/v_template', $data);
+	}
+	public function proses_edit()
+	{
+		$id = $this->input->post('nik');
+		$objek = array(
+			'nama_dosen' => $this->input->post('nama_dosen'),
+			'alamat' => $this->input->post('alamat')
+		);
+
+		$this->Dosen_model->update($id, $objek);
+		redirect('admin/dosen','refresh');
+		
+
+		// var_dump($objek);
 	}
 }
  ?>

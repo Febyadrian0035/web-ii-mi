@@ -8,15 +8,21 @@ class Mahasiswa_model extends CI_Model
 	{
 		return $this->db->get('mahasiswa')->result();
 	}
-	public function get()
-	{
-
-	}
 	public function create($objek){
 		return $this->db->insert('mahasiswa',$objek);
 	}
-	public function get_id($kode)
+	public function remove($id)
 	{
-		return $this->db->where('nim', $kode)->get('mahasiswa')->row();
+		$this->db->where('nim', $id);
+		return $this->db->delete('mahasiswa');
+	}
+	public function get_id($id)
+	{
+		$this->db->where('nim', $id);
+		return $this->db->get('mahasiswa')->row();
+	}
+	public function update($id, $objek)
+	{
+		return $this->db->where('nim', $id)->update('mahasiswa', $objek);
 	}
 }
