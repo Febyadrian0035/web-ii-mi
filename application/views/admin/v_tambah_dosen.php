@@ -14,6 +14,13 @@
 					<input class="form-control" name="nama_dosen">
 				</div>
 				<div class="form-group">
+					<label>Jenis Kelamin</label>
+					<select class="form-control" name="jenis_kelamin" value="<?php echo $isi_data->jenis_kelamin; ?>">
+						<option value="PRIA">PRIA</option>
+						<option value="WANITA">WANITA</option>
+					</select>
+				</div>
+				<div class="form-group">
 					<label>Alamat</label>
 					<input class="form-control" name="alamat">
 				</div>

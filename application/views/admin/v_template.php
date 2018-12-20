@@ -3,6 +3,7 @@
 <head>
 	<title> <?php echo $judul; ?> </title>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/bootstrap/css/bootstrap.css'); ?>">
+
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-blue">

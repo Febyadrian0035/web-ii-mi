@@ -14,6 +14,13 @@
 					<input class="form-control" name="nama_mahasiswa">
 				</div>
 				<div class="form-group">
+					<label>Jenis Kelamin</label>
+					<select class="form-control" name="jenis_kelamin" value="<?php echo $isi_data->jenis_kelamin; ?>">
+						<option value="PRIA">PRIA</option>
+						<option value="WANITA">WANITA</option>
+					</select>
+				</div>
+				<div class="form-group">
 					<label>Proram Studi</label>
 					<select class="form-control" name="program_studi">
 						<option value="D3 MI">D3 MI</option>

@@ -10,6 +10,7 @@
 				<tr>
 					<th>NIK</th>
 					<th>Nama Dosen</th>
+					<th>Jenis Kelamin</th>
 					<th>Alamat</th>
 					<th>Tgl Update</th>
 					<th>Aksi</th>
@@ -19,6 +20,7 @@
 				<tr>
 					<td><?php echo $key->nik; ?></td>
 					<td><?php echo $key->nama_dosen; ?></td>
+					<td><?php echo $key->jenis_kelamin; ?></td>
 					<td><?php echo $key->alamat; ?></td>
 					<td><?php echo date('d M Y', strtotime($key->created_at)) ; ?></td>
 					<td>
@@ -28,6 +30,9 @@
 				<?php } ?>
 			</table>
 		</div>
+		<div class="alert alert-info" style="background-color: lightblue" align="center"><div id="footer">
+<marquee >@copyright FEBI_ADRIAN.com</marquee>
+</div></div>
 	</div>
 	
 </div>

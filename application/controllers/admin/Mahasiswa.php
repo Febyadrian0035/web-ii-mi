@@ -31,6 +31,7 @@ class Mahasiswa extends CI_Controller
 		$objek = array(
 			'nim' => $this->input->post('nim'),
 			'nama_mahasiswa' => $this->input->post('nama_mahasiswa'),
+			'jenis_kelamin' => $this->input->post('jenis_kelamin'),
 			'program_studi' => $this->input->post('program_studi')
 		);
 
@@ -60,6 +61,7 @@ class Mahasiswa extends CI_Controller
 		$id = $this->input->post('nim');
 		$objek = array(
 			'nama_mahasiswa' => $this->input->post('nama_mahasiswa'),
+			'jenis_kelamin' => $this->input->post('jenis_kelamin'),
 			'program_studi' => $this->input->post('program_studi')
 		);
 

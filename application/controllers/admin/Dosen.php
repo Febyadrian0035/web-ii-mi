@@ -31,6 +31,7 @@ class Dosen extends CI_Controller
 		$objek = array(
 			'nik' => $this->input->post('nik'),
 			'nama_dosen' => $this->input->post('nama_dosen'),
+			'jenis_kelamin' => $this->input->post('jenis_kelamin'),
 			'alamat' => $this->input->post('alamat')
 		);
 
@@ -58,6 +59,7 @@ class Dosen extends CI_Controller
 		$id = $this->input->post('nik');
 		$objek = array(
 			'nama_dosen' => $this->input->post('nama_dosen'),
+			'jenis_kelamin' => $this->input->post('jenis_kelamin'),
 			'alamat' => $this->input->post('alamat')
 		);
 
