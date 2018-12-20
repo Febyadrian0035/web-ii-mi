@@ -1,6 +1,6 @@
 <div class="col-md-12">
 	<div class="card">
-		<div class="card-header" style="background-color: lightblue" align="center">
+		<div class="card-header" style="background-color: pink" align="center">
 			<?php echo $sub_judul; ?>
 		</div>
 		<div class="card-body">
